@@ -304,6 +304,13 @@ a{text-decoration:none;color:inherit}
 .f-legal a{font-size:.72rem;color:var(--text-3);transition:color .2s}
 .f-legal a:hover{color:var(--text-2)}
 
+/* ── House filters ── */
+.hfilt-bar{max-width:1400px;margin:0 auto 36px;display:flex;gap:8px;flex-wrap:wrap}
+.hfilt{background:transparent;border:1px solid var(--border);color:var(--text-2);font-family:var(--fb);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.hfilt:hover{border-color:var(--text-2);color:var(--text)}
+.hfilt.act{background:var(--lime);border-color:var(--lime);color:var(--dark)}
+.hcard.hid{display:none}
+
 /* ════════════ RESPONSIVE ════════════ */
 @media(max-width:1280px){.h-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1024px){
@@ -432,7 +439,7 @@ a{text-decoration:none;color:inherit}
 <div class="stats-bar">
   <div class="stats-grid">
     <div class="stat rv">
-      <div class="stat-n" data-target="50" data-sfx="+">50+</div>
+      <div class="stat-n" data-target="36" data-sfx="+">36+</div>
       <div class="stat-l">Típusterv variáció</div>
     </div>
     <div class="stat rv d1">
@@ -574,112 +581,158 @@ a{text-decoration:none;color:inherit}
   <div class="hdr-row">
     <div class="rv">
       <div class="tag">Típusházak</div>
-      <h2 class="h2">50+ terv,<br>mind megépíthető.</h2>
+      <h2 class="h2">36 típusterv,<br>mind megépíthető.</h2>
     </div>
-    <p class="lead rv d1" style="max-width:380px">Nem pusztán grafikai koncepciók — valóban megépült, kivitelezésre optimalizált tervek.</p>
+    <p class="lead rv d1" style="max-width:380px">Nem grafikai koncepciók — valóban megépült, kivitelezésre optimalizált, MgO SIP technológiával kivitelezett tervek. Egyszintes és emeletes változatban.</p>
   </div>
 
-  <div class="h-grid">
-    <div class="hcard rv">
+  <div class="hfilt-bar rv">
+    <button class="hfilt act" data-f="*" onclick="hFilter(this,'*')">Összes</button>
+    <button class="hfilt" data-f="eg" onclick="hFilter(this,'eg')">Egyszintes</button>
+    <button class="hfilt" data-f="em" onclick="hFilter(this,'em')">Emeletes</button>
+    <button class="hfilt" data-f="s" onclick="hFilter(this,'s')">0–99 m²</button>
+    <button class="hfilt" data-f="l" onclick="hFilter(this,'l')">100–200 m²</button>
+  </div>
+
+  <div class="h-grid" id="hgrid">
+
+    <!-- Egyszintes 0-99nm -->
+    <div class="hcard rv" data-eg data-s>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=75" alt="T01 – 75 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T01</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/koltozzma-san-marcos-tipushaz-kep2.jpg" alt="San Marcos 93 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">San Marcos</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
-        <div class="harea">75 m²</div>
-        <div class="hmeta"><span>2+1 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">93 m²</div>
+        <div class="hmeta"><span>3 hálószoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/san-marcos-93/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d1">
+
+    <div class="hcard rv d1" data-eg data-s>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=75" alt="T02 – 90 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T02</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/koltozzma-zadar-tipushaz-kep4.jpg" alt="Zadar 73 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Zadar</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
-        <div class="harea">90 m²</div>
-        <div class="hmeta"><span>3 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">73 m²</div>
+        <div class="hmeta"><span>2+1 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/zadar-73/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d2">
+
+    <div class="hcard rv d2" data-eg data-s>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=600&q=75" alt="T03 – 105 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T03</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/koltozzma-szeged-tipushaz-uj2023-3.jpg" alt="Szeged 88 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Szeged</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
-        <div class="harea">105 m²</div>
-        <div class="hmeta"><span>3+1 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">88 m²</div>
+        <div class="hmeta"><span>3 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/szeged-88/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d3">
+
+    <div class="hcard rv d3" data-eg data-s>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=75" alt="T04 – 120 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T04</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/sipeuropa-london-4.jpg" alt="London 85 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">London</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
-        <div class="harea">120 m²</div>
-        <div class="hmeta"><span>4 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">85 m²</div>
+        <div class="hmeta"><span>3 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/london-85/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv">
+
+    <!-- Egyszintes 100-200nm -->
+    <div class="hcard rv" data-eg data-l>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=600&q=75" alt="T05 – 135 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T05</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/Cuba-108-4_sipeuropa-tipushaz-4.jpg" alt="Kuba 108 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Kuba</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
-        <div class="harea">135 m²</div>
-        <div class="hmeta"><span>4+1 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">108 m²</div>
+        <div class="hmeta"><span>4 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/kuba-108/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d1">
+
+    <div class="hcard rv d1" data-eg data-l>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=600&q=75" alt="T06 – 150 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T06</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/Cuba-108-2_sipeuropa-tipushaz-2.jpg" alt="Brazilia 103 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Brazilia</div><div class="henergy">A+++</div>
+      </div>
+      <div class="hinfo">
+        <div class="harea">103 m²</div>
+        <div class="hmeta"><span>3+1 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/brazilia-103/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+      </div>
+    </div>
+
+    <div class="hcard rv d2" data-eg data-l>
+      <div class="himg-w">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/koltozzma-bali-tipushaz-uj2023-2.jpg" alt="Bali 102 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Bali 102</div><div class="henergy">A+++</div>
+      </div>
+      <div class="hinfo">
+        <div class="harea">102 m²</div>
+        <div class="hmeta"><span>3 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/bali-102-ujragondolva/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+      </div>
+    </div>
+
+    <div class="hcard rv d3" data-eg data-l>
+      <div class="himg-w">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/sipeuropa-tipushaz-toronto-5.jpg" alt="Toronto 102 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Toronto</div><div class="henergy">A+++</div>
+      </div>
+      <div class="hinfo">
+        <div class="harea">102 m²</div>
+        <div class="hmeta"><span>3+1 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/toronto-102/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+      </div>
+    </div>
+
+    <div class="hcard rv" data-eg data-l>
+      <div class="himg-w">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/sipeuropa-tipushaz-Delhi-109-4.jpg" alt="Delhi 126 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">Delhi</div><div class="henergy">A+++</div>
+      </div>
+      <div class="hinfo">
+        <div class="harea">126 m²</div>
+        <div class="hmeta"><span>4+1 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/delhi-126/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+      </div>
+    </div>
+
+    <div class="hcard rv d1" data-eg data-l>
+      <div class="himg-w">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/China-129-1_sipeuropa-tipushaz-1.jpg" alt="China 150 – MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">China</div><div class="henergy">A+++</div>
       </div>
       <div class="hinfo">
         <div class="harea">150 m²</div>
-        <div class="hmeta"><span>5 szoba</span><span style="color:var(--border)">·</span><span>Földszintes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="hmeta"><span>5 szoba</span><span style="color:var(--border)">·</span><span>Egyszintes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/china-150/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d2">
+
+    <!-- Emeletes 100-200nm -->
+    <div class="hcard rv d2" data-em data-l>
       <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=75" alt="T07 – 160 m² emeletes SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T07</div><div class="henergy">A+++</div>
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/07/EM4-1-1200.jpg" alt="New York 60+57 – Emeletes MgO SIP ház" class="himg" loading="lazy">
+        <div class="hcode">New York</div><div class="henergy">Emeletes</div>
       </div>
       <div class="hinfo">
-        <div class="harea">160 m²</div>
-        <div class="hmeta"><span>5 szoba</span><span style="color:var(--border)">·</span><span>Emeletes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
+        <div class="harea">60+57 m²</div>
+        <div class="hmeta"><span>4 szoba</span><span style="color:var(--border)">·</span><span>Emeletes</span></div>
+        <a href="https://koltozzma.hu/tipushaz/new-york-6057/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
       </div>
     </div>
-    <div class="hcard rv d3">
-      <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=75" alt="T08 – 180 m² emeletes SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T08</div><div class="henergy">A+++</div>
-      </div>
-      <div class="hinfo">
-        <div class="harea">180 m²</div>
-        <div class="hmeta"><span>5+1 szoba</span><span style="color:var(--border)">·</span><span>Emeletes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
-      </div>
-    </div>
-    <div class="hcard rv">
-      <div class="himg-w">
-        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=75" alt="T09 – 200 m² SIP ház" class="himg" loading="lazy">
-        <div class="hcode">T09</div><div class="henergy">A+++</div>
-      </div>
-      <div class="hinfo">
-        <div class="harea">200 m²</div>
-        <div class="hmeta"><span>6 szoba</span><span style="color:var(--border)">·</span><span>Emeletes</span></div>
-        <a href="https://koltozzma.hu/tipushazak/" class="hlink" target="_blank" rel="noopener">Részletek →</a>
-      </div>
-    </div>
-    <div class="hcard hcard-spec rv d1">
+
+    <!-- Egyedi -->
+    <div class="hcard hcard-spec rv d3">
       <div class="himg-w" style="display:flex;align-items:center;justify-content:center;min-height:175px">
         <div style="text-align:center;padding:20px">
           <div style="font-size:2.8rem;margin-bottom:8px">🏡</div>
@@ -692,10 +745,15 @@ a{text-decoration:none;color:inherit}
         <a href="https://koltozzma.hu/kalkulator/" class="hlink" target="_blank" rel="noopener">Ajánlatot kérek →</a>
       </div>
     </div>
+
   </div>
 
   <div class="h-cta rv">
-    <a href="https://koltozzma.hu/tipushazak/" class="btn btn-out" target="_blank" rel="noopener">Összes típusház megtekintése →</a>
+    <p style="font-size:.82rem;color:var(--text-2);margin-bottom:16px">Összesen 36 típusterv érhető el egyszintes és emeletes változatban. A katalógus PDF letölthető a weboldalon.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://koltozzma.hu/tipushazak/" class="btn btn-lime" target="_blank" rel="noopener">Összes típusház →</a>
+      <a href="https://koltozzma.hu/wp-content/uploads/2025/07/tipushazak-katalogus-kotlozzma.pdf" class="btn btn-out" target="_blank" rel="noopener">Katalógus letöltése (PDF)</a>
+    </div>
   </div>
 </section>
 
@@ -709,27 +767,29 @@ a{text-decoration:none;color:inherit}
   <div class="refs-grid">
     <div class="rblock rv">
       <div class="rimg-w">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=80"
-             alt="Magánépíttetőknek – Referencia SIP ház" class="rimg" loading="lazy">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/08/koltozzma-zsombo-kep13.jpg"
+             alt="Zsombói MgO SIP ház referencia – Költözzma Kft." class="rimg" loading="lazy"
+             onerror="this.src='https://koltozzma.hu/wp-content/uploads/elementor/thumbs/koltozzma-referenciak-kep1-2-rb2ntm2r1de6ycc51kioq46snsi2htfhschwtkd02q.jpg'">
       </div>
       <div class="rcont">
-        <div class="tag">Magánépíttetőknek</div>
-        <h3 class="rtitle">Egyedi<br>Otthonok</h3>
-        <p class="rdesc">Számos családi ház és nyaraló valósult meg magánmegrendelők elképzelése alapján – energiatudatos, fenntartható otthonokat adunk át.</p>
-        <a href="https://koltozzma.hu/referenciak/" class="btn btn-out" style="align-self:flex-start" target="_blank" rel="noopener">Referenciák →</a>
+        <div class="tag">Elkészült projektek</div>
+        <h3 class="rtitle">Valóban<br>megépült<br>otthonok.</h3>
+        <p class="rdesc">Zsombó, Zalalövő, Visegrád, Üllés — és még sok más helyszínen adtunk át kulcsrakész MgO SIP házakat. Minden projekt a mi kezünkből kerül ki, saját anyagból.</p>
+        <a href="https://koltozzma.hu/referenciak/" class="btn btn-out" style="align-self:flex-start" target="_blank" rel="noopener">Összes referencia →</a>
       </div>
     </div>
 
     <div class="rblock rv d2">
       <div class="rcont" style="order:1">
-        <div class="tag">Beruházóknak</div>
-        <h3 class="rtitle">Nagyobb<br>Projektek</h3>
-        <p class="rdesc">Többlakásos házakat, apartmanokat és befektetési célú ingatlanokat is építünk, előre egyeztetett határidőkkel és fix árakon.</p>
-        <a href="https://koltozzma.hu/referenciak/" class="btn btn-out" style="align-self:flex-start" target="_blank" rel="noopener">Referenciák →</a>
+        <div class="tag">Műszaki tartalom</div>
+        <h3 class="rtitle">Fix ár,<br>meglepetés<br>nélkül.</h3>
+        <p class="rdesc">Szerkezetkész vagy kulcsrakész átadás — az Ön döntése. Minden projekt fix áras szerződéssel, dokumentált műszaki tartalommal, ÉMI tanúsított anyagokból.</p>
+        <a href="https://koltozzma.hu/wp-content/uploads/2025/07/tipushazak-katalogus-kotlozzma.pdf" class="btn btn-out" style="align-self:flex-start" target="_blank" rel="noopener">Katalógus (PDF) →</a>
       </div>
       <div class="rimg-w" style="order:2">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=500&q=80"
-             alt="Beruházóknak – Referencia SIP projekt" class="rimg" loading="lazy">
+        <img src="https://koltozzma.hu/wp-content/uploads/2025/08/koltozzma-visegrad-kep3.jpg"
+             alt="Visegrádi MgO SIP ház referencia – Költözzma Kft." class="rimg" loading="lazy"
+             onerror="this.src='https://koltozzma.hu/wp-content/uploads/2025/08/koltozzma-zalalovo-kep2.jpg'">
       </div>
     </div>
   </div>
@@ -947,6 +1007,19 @@ a{text-decoration:none;color:inherit}
 
 function toggleNav(){
   document.getElementById('mnav').classList.toggle('open');
+}
+
+function hFilter(btn, f){
+  document.querySelectorAll('.hfilt').forEach(function(b){b.classList.remove('act');});
+  btn.classList.add('act');
+  document.querySelectorAll('#hgrid .hcard').forEach(function(card){
+    if(f==='*'){card.classList.remove('hid');return;}
+    var show = (f==='eg' && card.hasAttribute('data-eg')) ||
+               (f==='em' && card.hasAttribute('data-em')) ||
+               (f==='s'  && card.hasAttribute('data-s'))  ||
+               (f==='l'  && card.hasAttribute('data-l'));
+    card.classList.toggle('hid', !show);
+  });
 }
 </script>
 </body>
